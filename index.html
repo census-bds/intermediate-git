@@ -169,6 +169,69 @@ If this is successful, it is safe to delete the branch.
 
     git branch -d testing
 
+---
+
+# Merge Conflicts
+
+A lot of times, merging *won't* be successful.
+
+.center[![Merge Conflict](meme-merge.jpg)]
+
+Good news: This isn't actually *that* painful of a process. Git provides some tools to make it easier.
+
+Bad news: You're still going to have to do it *a lot*.
+
+---
+
+# Merge Conflicts
+
+Merge conflicts occur when Git can't figure out how to apply two diffs to the same blob.
+
+`app.py -- HEAD`
+
+    import math
+
+`app.py -- master`
+
+    from math import sqrt
+
+`app.py -- new_branch`
+
+    import math
+
+    print(math.sqrt(2))
+
+---
+
+# Merge Conflicts
+
+    .bash
+    Auto-merging app.py
+    CONFLICT (content): Merge conflict in app.py
+    Automatic merge failed; fix conflicts and then commit the result.
+
+See what's up using `git status` (not shown).
+
+`app.py`
+
+    from math import sqrt
+    =======
+    import math
+
+    print(math.sqrt(2))
+    >>>>>>> testing
+
+We **want** there to be a merge conflict in this case so that we can resolve it properly:
+
+    from math import sqrt
+
+    print(sqrt(2))
+
+Then,
+
+    git add app.py
+    git commit
+
     </textarea>
     <div id="slideshow"></div>
   </body>
