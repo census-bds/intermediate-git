@@ -477,6 +477,46 @@ I like Tim Pope's example even better:
 
       - Use a hanging indent
 
+---
+
+# Misc. Tips and Tricks
+
+`git commit` options:
+
+* `-a`: add all files currently in the repo to the staging area before
+committing.
+
+* '-m': specify commit message on the command line. Don't do this in a real
+project; write a good commit message.
+
+* '-v': *verbose*: include the diff for this commit in the editor for the
+commit message so you can remember what you did.
+
+* '-p': commit interactively by chunks. This is crazy: you can commit some
+parts of files but not others.
+
+`git mv`: git detects moved files automagically
+
+Bash autocompletions: Google and install, it'll make your life easier. Or use
+zsh.
+
+---
+
+# Misc. Tips and Tricks
+
+`git stash`: store files from your working directory without committing them.
+
+    # example usage
+    git checkout -b feature_branch
+    # hack hack hack
+    # your boss says there's a critical bug in production
+    git stash
+    git checkout master
+    # fix fix fix
+    git commit
+    git checkout feature_branch
+    git stash pop
+
     </textarea>
     <div id="slideshow"></div>
   </body>
