@@ -66,6 +66,24 @@ Commits include pointers to parent commits.
 
 .center[![Commit Parents](commit-parents.png)]
 
+---
+
+# Branches
+
+What's a *branch*? Simply a pointer to a commit!
+
+.center[![Single Branch](single-branch.png)]
+
+Don't believe me? Check!
+
+    .bash
+    > cat .git/refs/heads/master
+    d12a3c549eb486c5ad5f95c145df4685097755ad
+    > git show d12a3c54
+    commit d12a3c549eb486c5ad5f95c145df4685097755ad
+    Author: Zack Newman <znewman01@gmail.com>
+    ...
+
     </textarea>
     <div id="slideshow"></div>
   </body>
