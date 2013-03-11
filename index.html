@@ -126,6 +126,38 @@ What happens when I commit?
 
 .center[![Advancing HEAD](commit-head.png)]
 
+If we were to merge `testing` into `master` right now, it'd be simple (fast-forward).
+
+---
+
+# Branches
+
+Let's make things more interesting:
+
+    .bash
+    git checkout master
+    # edit edit
+    git commit
+
+.center[![Divergent History](divergent-history.png)]
+
+---
+
+# Merging
+
+    .bash
+    git merge testing
+
+Git will:
+
+1. Find common ancestor
+2. Identify commit to merge into and commit to merge in
+3. Create a new commit based on three-way merging. This commit has two parents.
+
+If this is successful, it is safe to delete the branch.
+
+    git branch -d testing
+
     </textarea>
     <div id="slideshow"></div>
   </body>
