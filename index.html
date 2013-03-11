@@ -87,7 +87,7 @@ What's a *branch*? Simply a pointer to a commit!
 
 Don't believe me? Check!
 
-    .bash
+    .no-highlight
     > cat .git/refs/heads/master
     d12a3c549eb486c5ad5f95c145df4685097755ad
     > git show d12a3c54
@@ -99,12 +99,12 @@ Don't believe me? Check!
 
 # Branches
 
-    .bash
+    .no-highlight
     git branch testing # create a new branch
 
 .center[![New Branch](new-branch.png)]
 
-    .bash
+    .no-highlight
     > cat .git/refs/heads/testing
     8e19ecbd2b962a7eb4a2aa36b5bac51442a1b2a8
     > git show 8e19ecb
@@ -118,7 +118,7 @@ Don't believe me? Check!
 
 How does Git know what branch I'm on?
 
-    .bash
+    .no-highlight
     > cat .git/HEAD
     ref: refs/heads/master
 
@@ -131,9 +131,9 @@ How does Git know what branch I'm on?
 What happens when I commit?
 
     .bash
-    > git checkout testing
+    git checkout testing
     # edit edit
-    > git commit
+    git commit
 
 .center[![Advancing HEAD](commit-head.png)]
 
@@ -167,6 +167,7 @@ Git will:
 
 If this is successful, it is safe to delete the branch.
 
+    .bash
     git branch -d testing
 
 ---
@@ -205,7 +206,7 @@ Merge conflicts occur when Git can't figure out how to apply two diffs to the sa
 
 # Merge Conflicts
 
-    .bash
+    .no-highlight
     Auto-merging app.py
     CONFLICT (content): Merge conflict in app.py
     Automatic merge failed; fix conflicts and then commit the result.
@@ -229,6 +230,7 @@ We **want** there to be a merge conflict in this case so that we can resolve it 
 
 Then,
 
+    .bash
     git add app.py && git commit
 
 ---
@@ -255,6 +257,7 @@ Make sure **never** to do any of the following things after you've pushed your c
 
 Forgot a file? Messed up the commit message?
 
+    .bash
     git commit --amend
 
 ---
@@ -289,6 +292,7 @@ Merge conflicts can occur here.
 
 At this point, you can simply
 
+    .bash
     git checkout master
     git merge experiment
 
@@ -305,6 +309,7 @@ This is sweet because you don't get any ugly merge-fix commits in `master`.
 You can also interactive rebase. Say you've been hacking on a feature branch
 and it's really ugly, but you want to clean it up before you merge into `master`.
 
+    .bash
     git checkout -b feature
     # hack hack
     git commit -a
@@ -319,7 +324,7 @@ and it's really ugly, but you want to clean it up before you merge into `master`
 
 This will put you into interactive rebase mode:
 
-    .bash
+    .no-highlight
     pick f7f3f6d changed my name a bit
     pick 310154e updated README formatting and added blame
     pick a5f4a0d added cat-file
@@ -399,6 +404,7 @@ location:
 
 Example contents:
 
+    .no-highlight
     *~ # editor backups!
     .DS_Store # if you use a Mac and commit one of these files I will be very upset
     venv # anything specific to YOUR system goes in YOUR gitignore
@@ -429,7 +435,7 @@ According to Linus Torvalds himself:
 
 > A good commit message looks like this:
 > 
->     .bash
+>     .no-highlight
 >     Header line: explaining the commit in one line
 > 
 >     Body of commit message is a few lines of text, explaining things
@@ -455,6 +461,7 @@ According to Linus Torvalds himself:
 
 I like Tim Pope's example even better:
 
+    .no-highight
     Capitalized, short (50 chars or less) summary
 
     More detailed explanatory text, if necessary.  Wrap it to about 72
