@@ -360,6 +360,29 @@ Tags can also be annotated with messages, GPG-signed, and have metadata.
 
 Please please please use [semantic versioning](http://semver.org/).
 
+---
+
+# Configuration
+
+`git config` takes:
+
+* `--system`: `/etc/gitconfig`
+
+* `--global`: `~/.gitconfig`
+
+* default: `.git/config`
+
+Some useful `git config` commands:
+
+    .bash
+    git config --help
+    # you should definitely do these two
+    git config --global user.name "Zack Newman"
+    git config --global user.email znewman01@gmail.com
+    # do this one!
+    git config --global color.ui true
+    # whitespace/formatting, diff/merge tools, editor, GPG key
+
     </textarea>
     <div id="slideshow"></div>
   </body>
