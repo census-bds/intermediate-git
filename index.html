@@ -341,6 +341,25 @@ This will put you into interactive rebase mode:
 Note that this runs old-to-new. You can do any of the commands, then exit. Git
 will give you pretty clear instructions on what to do from there.
 
+---
+
+# Tagging
+
+If you're maintianing a library or something that gets actually released, tags are really helpful.
+
+At its simplest, a tag is essentially a branch that doesn't change: it points to the same commit forever.
+
+Tags can also be annotated with messages, GPG-signed, and have metadata.
+
+    .bash
+    git tag v1.0 # create plain tag
+    git tag -a v1.0 # create annotated tag
+    git tag -s v1.0 # create signed tag
+    git tag -v v1.0 # verify signed tag
+    git push origin v1.0 # push tag to remote, which doesn't happen by default
+
+Please please please use [semantic versioning](http://semver.org/).
+
     </textarea>
     <div id="slideshow"></div>
   </body>
