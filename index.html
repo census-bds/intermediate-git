@@ -383,6 +383,23 @@ Some useful `git config` commands:
     git config --global color.ui true
     # whitespace/formatting, diff/merge tools, editor, GPG key
 
+---
+
+# Configuration
+
+`.gitignore` files are really useful!
+
+You should have a global gitignore. Mine lives at `~/.gitignore`. Set that
+location:
+
+    git config --global core.excludesfile ~/.gitignore
+
+Example contents:
+
+    *~ # editor backups!
+    .DS_Store # if you use a Mac and commit one of these files I will be very upset
+    venv # anything specific to YOUR system goes in YOUR gitignore
+
     </textarea>
     <div id="slideshow"></div>
   </body>
