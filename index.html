@@ -229,8 +229,117 @@ We **want** there to be a merge conflict in this case so that we can resolve it 
 
 Then,
 
-    git add app.py
-    git commit
+    git add app.py && git commit
+
+---
+
+# Merge Conflicts
+
+That's really all there is to it. Some tips/tricks though:
+
+* `git mergetool`
+
+* `git checkout --theirs|--ours [file]`
+
+---
+
+# Rewriting History
+
+Make sure **never** to do any of the following things after you've pushed your changes to a remote repo.
+
+.center[![Danger Zone](danger-zone.jpg)]
+
+---
+
+# Rewriting History
+
+Forgot a file? Messed up the commit message?
+
+    git commit --amend
+
+---
+
+# Rewriting History
+
+Alternative to merging: the rebase
+
+## ![Pre-Rebase](pre-rebase.png) → ![Pre-Rebase-Merge](pre-rebase-merge.png)
+
+---
+
+# Rewriting History
+
+    git checkout experiment
+    git rebase master
+
+This will:
+
+1. Find the common ancestor of `experiment` and `master`.
+2. Getting all of the diffs of the commits from `experiment` and saving them to temporary files.
+3. Setting `experiment` to point to the same commit as `master`.
+4. Apply each of the diffs in sequence.
+
+.center[![Rebase](rebase.png)]
+
+Merge conflicts can occur here.
+
+---
+
+# Rewriting History
+
+At this point, you can simply
+
+    git checkout master
+    git merge experiment
+
+and `master` gets fast-forwarded.
+
+.center[![Rebase-Merge](rebase-merge.png)]
+
+This is sweet because you don't get any ugly merge-fix commits in `master`.
+
+---
+
+# Rewriting History
+
+You can also interactive rebase. Say you've been hacking on a feature branch
+and it's really ugly, but you want to clean it up before you merge into `master`.
+
+    git checkout -b feature
+    # hack hack
+    git commit -a
+    # hack hack
+    git commit -a
+    # etc.
+    git rebase -i master
+
+---
+
+# Rewriting History
+
+This will put you into interactive rebase mode:
+
+    .bash
+    pick f7f3f6d changed my name a bit
+    pick 310154e updated README formatting and added blame
+    pick a5f4a0d added cat-file
+
+    # Rebase 710f0f8..a5f4a0d onto 710f0f8
+    #
+    # Commands:
+    #  p, pick = use commit
+    #  r, reword = use commit, but edit the commit message
+    #  e, edit = use commit, but stop for amending
+    #  s, squash = use commit, but meld into previous commit
+    #  f, fixup = like "squash", but discard this commit's log message
+    #  x, exec = run command (the rest of the line) using shell
+    #
+    # If you remove a line here THAT COMMIT WILL BE LOST.
+    # However, if you remove everything, the rebase will be aborted.
+    #
+
+Note that this runs old-to-new. You can do any of the commands, then exit. Git
+will give you pretty clear instructions on what to do from there.
 
     </textarea>
     <div id="slideshow"></div>
