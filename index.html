@@ -16,11 +16,15 @@ class: center, middle
 
 # Intermediate Git
 
-2013-03-12
 
-Zack Newman, ADI
+Christian Moscardi
 
-adicu.com
+ERD Business Development Staff
+
+2-25-2021
+
+(credit to [Zack Newman](https://github.com/znewman01/intermediate-git) for original talk)
+
 
 ---
 
@@ -28,52 +32,20 @@ adicu.com
 
 I assume some familiarity with basic Git operations.
 
-But PLEASE stop me if I say something that doesn't make sense.
+But please stop me if I say something that doesn't make sense.
 
-> He who asks is a fool for five minutes, but he who does not ask remains a fool forever.
-> .right[*Chinese Proverb*]
+---
+# How Git works (remote)
+
+.center[![Git collaboration](git-repos.svg)]
+
+(credit to https://www.cs.swarthmore.edu/~adanner/help/git)
 
 ---
 
 # How Git Works
 
-Files are *commited*, *modified*, or *staged*
-
-Stored in the Git directory, working directory, or staging area respectively
-
-.center[![Local Operations](local-operations.png)]
-
----
-
-# How Git Works
-
-What is a commit?
-
-* Snapshot of the state of your repo
-
-* **Not** a diff (unlike in Subversion)
-
-.center[![File Lifecycle](file-lifecycle.png)]
-
----
-
-# How Git Works
-
-Tiny bit of internals (each of these has a SHA1):
-
-* *blob*: a version of a file
-
-* *tree*: a collection of pointers to blobs
-
-* *commit*: pointer to a tree, plus commit metadata
-
-.center[![Commits, Trees, and Blobs](commit-tree-blob.png)]
-
----
-
-# How Git Works
-
-Commits include pointers to parent commits.
+Commits are snapshots of the state of a repo.
 
 .center[![Commit Parents](commit-parents.png)]
 
@@ -151,6 +123,48 @@ Let's make things more interesting:
     git commit
 
 .center[![Divergent History](divergent-history.png)]
+
+
+
+
+
+---
+
+# How Git Works (local)
+
+Files are *commited*, *modified*, or *staged*
+
+Stored in the Git directory, working directory, or staging area respectively
+
+.center[![Local Operations](local-operations.png)]
+
+---
+
+# How Git Works
+
+What is a commit?
+
+* Snapshot of the state of your repo
+
+* **Not** a diff (unlike in Subversion)
+
+.center[![File Lifecycle](file-lifecycle.png)]
+
+---
+
+
+
+# How Git Works
+
+Tiny bit of internals (each of these has a SHA1):
+
+* *blob*: a version of a file
+
+* *tree*: a collection of pointers to blobs
+
+* *commit*: pointer to a tree, plus commit metadata
+
+.center[![Commits, Trees, and Blobs](commit-tree-blob.png)]
 
 ---
 
