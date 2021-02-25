@@ -524,9 +524,26 @@ zsh.
     git checkout master
     # fix fix fix
     git commit
+    git push
     git checkout feature_branch
+    # you may also want to rebase feature_branch onto master here
     git stash pop
 
+
+`git reflog`: tracks every step you've taken locally
+
+    # example usage
+    git mergetool
+    git commit
+
+    # oh crap, messed that up
+    git reflog
+    # find hash of commit before resolving conflict
+
+    # WARNING: git reset itself is dangerous
+    # never do anything like this with changes you've pushed
+    git reset --hard [commit-hash]
+ 
 ---
 
 # The Future
