@@ -35,7 +35,7 @@ I assume some familiarity with basic Git operations.
 But please stop me if I say something that doesn't make sense.
 
 ---
-# How Git works (remote)
+# 1000-foot overview
 
 .center[![Git collaboration](git-repos.svg)]
 
@@ -111,6 +111,43 @@ What happens when I commit?
 
 If we were to merge `testing` into `master` right now, it'd be simple (fast-forward).
 
+
+---
+
+# Branches and remotes
+
+Now, let's zoom back out. We have made some changes that we want to incorporate into production. Using gitlab (or github), what's the workflow?
+
+.center[<h3>Merge (or pull) requests!</h3>]
+
+.center[![Pull request workflow](pull-request-flow.png)]
+
+(credit to https://docs.rhodecode.com/RhodeCode-Enterprise/collaboration/pr-flow.html)
+
+---
+
+# What's a remote?
+
+A <b>remote</b> is another copy of a repository that lives outside of where you're currently working. Typically, this is a server where you're collaborating with your team.
+
+    .bash
+    > git remote -v
+    github  https://github.com/census-bds/intermediate-git.git (fetch)
+    github  https://github.com/census-bds/intermediate-git.git (push)
+    origin  https://git.econ.census.gov/mosca303/intermediate-git-demo.git (fetch)
+    origin  https://git.econ.census.gov/mosca303/intermediate-git-demo.git (push)
+
+---
+
+# How do I make changes to a remote?
+
+In a typical workflow, you develop new functionality on a branch, then **push** that branch to the remote where you're collaborating.
+
+    .bash
+    git push origin [branch_name]
+
+Git pushes all of the necessary commits and branch metadata to the remote server.
+
 ---
 
 # Branches
@@ -121,9 +158,9 @@ Let's make things more interesting:
     git checkout master
     # edit edit
     git commit
+    git push origin master
 
 .center[![Divergent History](divergent-history.png)]
-
 
 
 
@@ -132,8 +169,7 @@ Let's make things more interesting:
 
 # Merging
 
-    .bash
-    git merge testing
+
 
 Git will:
 
@@ -145,6 +181,16 @@ If this is successful, it is safe to delete the branch.
 
     .bash
     git branch -d testing
+
+Local command
+
+    .bash
+    git merge testing
+
+Remote command
+
+    .bash
+    press the merge button on 'testing' merge request
 
 ---
 
@@ -391,6 +437,8 @@ Example contents:
 
 * Don't commit clutter!
 
+* Don't commit data!
+
 * Each commit should stand on its own.
 
 * Don't combine two different changes into one commit (whitespace commits
@@ -403,39 +451,11 @@ chars).
 
 * Don't commit commented out code.
 
----
-
-# Best Practices
-
-According to Linus Torvalds himself:
-
-> A good commit message looks like this:
-> 
->     .no-highlight
->     Header line: explaining the commit in one line
-> 
->     Body of commit message is a few lines of text, explaining things
->     in more detail, possibly giving some background about the issue
->     being fixed, etc etc.
-> 
->     The body of the commit message can be several paragraphs, and
->     please do proper word-wrap and keep columns shorter than about
->     74 characters or so. That way "git log" will show things
->     nicely even when it's indented.
-> 
->     Reported-by: whoever-reported-it
->     Signed-off-by: Your Name <youremail@yourhost.com>
-> 
-> where that header line really should be meaningful, and really should be
-> just one line. That header line is what is shown by tools like gitk and
-> shortlog, and should summarize the change in one readable line of text,
-> independently of the longer explanation.
 
 ---
 
 # Best Practices
 
-I like Tim Pope's example even better:
 
     .no-highight
     Capitalized, short (50 chars or less) summary
@@ -459,6 +479,8 @@ I like Tim Pope's example even better:
       single space, with blank lines in between, but conventions vary here
 
       - Use a hanging indent
+
+(Credit to Tim Pope)
 
 ---
 
