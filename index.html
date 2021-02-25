@@ -130,44 +130,6 @@ Let's make things more interesting:
 
 ---
 
-# How Git Works (local)
-
-Files are *commited*, *modified*, or *staged*
-
-Stored in the Git directory, working directory, or staging area respectively
-
-.center[![Local Operations](local-operations.png)]
-
----
-
-# How Git Works
-
-What is a commit?
-
-* Snapshot of the state of your repo
-
-* **Not** a diff (unlike in Subversion)
-
-.center[![File Lifecycle](file-lifecycle.png)]
-
----
-
-
-
-# How Git Works
-
-Tiny bit of internals (each of these has a SHA1):
-
-* *blob*: a version of a file
-
-* *tree*: a collection of pointers to blobs
-
-* *commit*: pointer to a tree, plus commit metadata
-
-.center[![Commits, Trees, and Blobs](commit-tree-blob.png)]
-
----
-
 # Merging
 
     .bash
@@ -245,6 +207,8 @@ Then,
     .bash
     git add app.py && git commit
 
+
+
 ---
 
 # Merge Conflicts
@@ -256,6 +220,7 @@ That's really all there is to it. Some tips/tricks though:
 * `git checkout --theirs|--ours [file]`
 
 ---
+
 
 # Rewriting History
 
@@ -554,6 +519,31 @@ Other topics:
 * Recovery
 
 * `git bisect`
+
+* git hooks
+
+---
+
+# How Git Works
+
+Files are *commited*, *modified*, or *staged*
+
+Stored in the Git directory, working directory, or staging area respectively
+
+.center[![Local Operations](local-operations.png)]
+
+---
+
+# How Git Works
+
+What is a commit?
+
+* Snapshot of the state of your repo
+
+* **Not** a diff (unlike in Subversion)
+
+.center[![File Lifecycle](file-lifecycle.png)]
+
 
     </textarea>
     <div id="slideshow"></div>
